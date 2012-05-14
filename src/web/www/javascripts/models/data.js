@@ -1,3 +1,12 @@
+// Set up a model to use in our Store
+Ext.regModel('NewsLinks', {
+    fields: ['title']
+});
+
+OKnesset.NewsLinksStore = new Ext.data.Store({
+    model: 'NewsLinks'
+});
+
 Ext.regModel('Party', {
     fields: ['name']
 });

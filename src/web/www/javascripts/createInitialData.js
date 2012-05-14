@@ -46,7 +46,7 @@ var OKnessetParser = new function(){
 					new_committees.push(obj)
 			}
 			value.committees = new_committees;
-			debugger
+
 	        memberIdArray.push(value);
 	        memberMap[value.id] = value;
 

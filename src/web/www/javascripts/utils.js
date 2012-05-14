@@ -45,6 +45,26 @@ function GATrackBill(url, callback) {
 	}
 }
 
+function GATrackLinkCanceled(url) {
+	if (isPhoneGap()) {
+		googleAnalytics.trackEvent(function() {
+		}, "bills", "cancelView", url, undefined, true);
+	}
+}
+
+function GATrackLink(url, callback) {
+	if (isPhoneGap()) {
+		if (isAndroid()) {
+			googleAnalytics.trackPageview("/app/external" + url, {
+				dispatch : true
+			}, callback, callback);
+		} else if (isiOS()) {
+			googleAnalytics.trackPageview("/app/external" + url, callback, {
+				dispatch : true
+			});
+		}
+	}
+}
 /**
  * End of google analytics
  */
