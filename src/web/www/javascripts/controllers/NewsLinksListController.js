@@ -10,12 +10,20 @@ Ext.regController('NewsLinksList', {
      	var newsLinksListController = this;
     	$this.newsLinksListView.addListener('itemtap',
             	function(that, index, item, e) {
-    		debugger
+   
             var record = that.store.getAt(index);
             newsLinksListController._gotoLink(record);
 				});
+    	var sMembers = "";
+    	for (i=0;i<1;i++) {
+    		var party = slimData[i];
+    		for (j=0;j<5;j++)
+    			sMembers += party.members[j].name += "%20OR%20"
+    	}
+    	sMembers = sMembers.substr(0,sMembers.length-5);	
+    	//sMembers ='אלי ישי OR אהוד ברק'
      	Ext.util.JSONP.request({
-                url: 'http://api.bing.net/json.aspx?AppId=D92F32F34F57F9A3DF2CD73F80DF63292EEE2B1A&Sources=Web&Query=simple&JsonType=callback&JsonCallback=Ext.util.JSONP.callback',
+                url: 'http://api.bing.net/json.aspx?AppId=D92F32F34F57F9A3DF2CD73F80DF63292EEE2B1A&Sources=Web&Query=(' + sMembers + ')%20AND%20(site:haaretz.co.il OR site:ynet.co.il OR site:nrg.co.il OR site:http://www.israelhayom.co.il/)&JsonType=callback&JsonCallback=Ext.util.JSONP.callback',
  //               url: 'http://api.bing.net/json.aspx?AppId=D92F32F34F57F9A3DF2CD73F80DF63292EEE2B1A&Sources=Web&Query=%22%D7%90%D7%9C%D7%99%20%D7%90%D7%A4%D7%9C%D7%9C%D7%95%22%20%28site:ynet.co.il%20OR%20site:haaretz.co.il%29&Version=2.0&Options=EnableHighlighting&News.Offset=0&News.SortBy=Relevance',
 //        		url: "http://ws.geonames.org/searchJSON",
 	
@@ -30,7 +38,7 @@ Ext.regController('NewsLinksList', {
                          }
                          // Continue your code
                          
-                    	debugger
+                    	
                     
  
 
